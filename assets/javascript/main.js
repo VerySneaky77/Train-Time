@@ -18,6 +18,7 @@ $(document).ready(function () {
         var $nameInput = $("#train-name-input");
         var $localeInput = $("#train-location-input");
         var $timeInput = $("#train-time-input");
+        var $timeSplit = $timeInput.val().split(':');
 
         e.preventDefault();
 
@@ -27,28 +28,36 @@ $(document).ready(function () {
             database.ref().push({
                 name: $nameInput.val().trim(),
                 location: $localeInput.val().trim(),
-                time: $timeInput.val().trim()
+                timeHours: parseInt($timeSplit[0]),
+                timeMinutes: parseInt($timeSplit[1]),
             });
         }
         else { $("#empty-form-warning").text("You must fill all form fields."); }
+        
+        $("#train-name-input").val() = "";
+        $("#train-location-input").val() = "";
+        $("#train-time-input").val() = "";
     })
 
     database.ref().on("child_added", function (snapshot) {
         // Track object properties
         var trainName = snapshot.val().name;
         var trainLocation = snapshot.val().location;
-        var trainTime = snapshot.val().time;
+        var trainTimeHours = snapshot.val().timeHours;
+        var trainTimeMinutes = snapshot.val().timeMinutes;
+        var timeArrival = moment().hour(trainTimeHours).minute(trainTimeMinutes);
 
         console.log(trainName);
         console.log(trainLocation);
-        console.log(trainTime);
+        console.log(trainTimeHours);
+        console.log(trainTimeMinutes);
 
         // Table well
         var newRow = $("<tr>").append(
             $("<td>").text(trainName),
             $("<td>").text(trainLocation),
-            $("<td>").text(trainTime),
-            $("<td>").text(calculateArrival(trainTime)),
+            $("<td>").text(timeArrival.format("HH:mm")),
+            $("<td>").text(calculateArrival(timeArrival)),
         );
 
         $("#trains-table > tbody").prepend(newRow);
@@ -58,12 +67,9 @@ $(document).ready(function () {
     });
 
     // Calculate arrival time
-    function calculateArrival() {
-        return "12"
-    }
+    function calculateArrival(arrival) {
+        var timeCurrent = moment();
 
-    // display database entries
-    function updateTimeTracker() {
-
+        return arrival.diff(timeCurrent, "minutes");
     }
 })
