@@ -2,57 +2,70 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Train Schedule</title>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
-        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-        <link rel="stylesheet" type="text/css" href="assets/css/style.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Train Schedule</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+    integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+  <link rel="stylesheet" type="text/css" href="assets/css/style.css">
 </head>
 
 <body>
-    <header class="container">
-        <h1>Train Schedule Tracker</h1>
-    </header>
+  <header class="jumbotron">
+    <h1>Train Schedule Tracker</h1>
+  </header>
 
-    <section>
-            <table class="table">
-                    <thead>
-                      <tr>
-                        <th scope="col">Line Name</th>
-                        <th scope="col">Arrival Location</th>
-                        <th scope="col">Arrival Time</th>
-                        <th scope="col">Time Until Arrival</th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      <tr>
-                        <th scope="row">1</th>
-                        <td>Mark</td>
-                        <td>Otto</td>
-                        <td>@mdo</td>
-                      </tr>
-                      <tr>
-                        <th scope="row">2</th>
-                        <td>Jacob</td>
-                        <td>Thornton</td>
-                        <td>@fat</td>
-                      </tr>
-                      <tr>
-                        <th scope="row">3</th>
-                        <td>Larry</td>
-                        <td>the Bird</td>
-                        <td>@twitter</td>
-                      </tr>
-                    </tbody>
-                  </table>
-    </section>
+  <section class="container">
+    <table class="table">
+      <thead>
+        <tr>
+          <th scope="col">Train Line Name</th>
+          <th scope="col">Arrival Location</th>
+          <th scope="col">Arrival Time</th>
+          <th scope="col">Time Until Arrival</th>
+        </tr>
+      </thead>
+      <tbody>
+      </tbody>
+    </table>
+  </section>
 
-    <script src="https://ajax.aspnetcdn.com/ajax/jquery/jquery-1.9.0.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/locale/ar-ma.js"></script>
-    <script>moment().format();</script>
-    <script src="assets/javascript/main.js"></script>
+  <div class="container">
+    <div class="card">
+      <p class="card-header">
+        Train Line Information
+      </p>
+      <form id="train-line-form" class="card-body">
+        <div class="form-group">
+          <label for="train-name-input" class="card-title">Line Name</label>
+          <input type="text" class="form-control" id="train-name-input" aria-describedby="name-help"
+            placeholder="B&O Railroad">
+          <small id="name-help" class="form-text text-muted">Enter the name of the train line.</small>
+        </div>
+        <div class="form-group">
+          <label for="train-location-input" class="card-title">Arrival Location</label>
+          <input type="text" class="form-control" id="train-location-input" aria-describedby="location-help"
+            placeholder="Baltimore">
+          <small id="location-help" class="form-text text-muted">Enter the arrival location.</small>
+        </div>
+        <div class="form-group">
+          <label for="train-time-input" class="card-title">Arrival Time (24:00 Hr. Standard)</label>
+          <input type="text" class="form-control" id="train-time-input" aria-describedby="time-help"
+            placeholder="18:00">
+          <small id="time-help" class="form-text text-muted">Enter the time of arrival in 24-hour standard time.</small>
+        </div>
+        <button id="info-submit" type="submit" class="btn btn-primary">Submit</button>
+      </form>
+      <p id="empty-form-warning" class="card-footer text-warning"></p>
+    </div>
+  </div>
+
+
+  <script src="https://ajax.aspnetcdn.com/ajax/jquery/jquery-1.9.0.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
+  <script>moment().format();</script>
+  <script src="assets/javascript/main.js"></script>
 </body>
 
 </html>
