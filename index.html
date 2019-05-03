@@ -9,6 +9,10 @@
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
     integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
   <link rel="stylesheet" type="text/css" href="assets/css/style.css">
+  <!-- Moment -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
+  <!-- Firebase -->
+  <script src="https://www.gstatic.com/firebasejs/5.11.1/firebase.js"></script>
 </head>
 
 <body>
@@ -16,22 +20,24 @@
     <h1>Train Schedule Tracker</h1>
   </header>
 
-  <section class="container">
-    <table class="table">
-      <thead>
-        <tr>
-          <th scope="col">Train Line Name</th>
-          <th scope="col">Arrival Location</th>
-          <th scope="col">Arrival Time</th>
-          <th scope="col">Time Until Arrival</th>
-        </tr>
-      </thead>
-      <tbody>
-      </tbody>
-    </table>
+  <section class="container mb-3">
+    <div class="card">
+      <table id="trains-table" class="table table-hover">
+        <thead>
+          <tr>
+            <th scope="col">Train Line Name</th>
+            <th scope="col">Arrival Location</th>
+            <th scope="col">Arrival Time</th>
+            <th scope="col">Time Until Arrival (minutes)</th>
+          </tr>
+        </thead>
+        <tbody>
+        </tbody>
+      </table>
+    </div>
   </section>
 
-  <div class="container">
+  <section class="container">
     <div class="card">
       <p class="card-header">
         Train Line Information
@@ -59,12 +65,10 @@
       </form>
       <p id="empty-form-warning" class="card-footer text-warning"></p>
     </div>
-  </div>
+  </section>
 
 
   <script src="https://ajax.aspnetcdn.com/ajax/jquery/jquery-1.9.0.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
-  <script>moment().format();</script>
   <script src="assets/javascript/main.js"></script>
 </body>
 
